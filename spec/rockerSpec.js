@@ -14,9 +14,9 @@ describe("rocker", function() {
   });
 
   it("should have a step function that makes its node blink", function() {
-    sinon.spy(rocker.$node, 'toggle');
+    sinon.spy(rocker.$node, 'animate');
     rocker.step();
-    expect(rocker.$node.toggle.called).to.be.true;
+    expect(rocker.$node.animate.called).to.be.true;
   });
 
   describe("dance", function(){

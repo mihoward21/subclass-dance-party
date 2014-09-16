@@ -23,7 +23,11 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
-.dancer{
+.lineUp{
+  padding:5px 12px;
+  float:left;
+}
+.dancer, .rocker, .bouncy, .spinner{
   position:absolute;
   background: url(tonyphillips.jpg) no-repeat;
   background-size: 100%;
@@ -31,21 +35,50 @@ body, a:link, a:visited, a:active{
   width: 90px;
 }
 .rocker{
-  position:absolute;
   background: url(shawndrost.jpg) no-repeat;
   background-size: 100%;
-  height: 120px;
-  width: 90px;
 }
 .bouncy{
-  position:absolute;
   background: url(marcusphillips.jpg) no-repeat;
   background-size: 100%;
-  height: 120px;
-  width: 90px;
+  -webkit-animation: Scale 2s 1s infinite linear alternate;
+  -moz-animation: Scale 2s 1s infinite linear alternate;
+  -ms-animation: Scale 2s 1s infinite linear alternate;
+  -o-animation: Scale 2s 1s infinite linear alternate;
+  animation: Scale 2s 1s infinite linear alternate;
+}
+.spinner{
+  background: url(dougcalhoun.jpg) no-repeat;
+  background-size: 100%;
+  -webkit-animation: Rotate 2s 1s infinite linear alternate;
+  -moz-animation: Rotate 2s 1s infinite linear alternate;
+  -ms-animation: Rotate 2s 1s infinite linear alternate;
+  -o-animation: Rotate 2s 1s infinite linear alternate;
+  animation: Rotate 2s 1s infinite linear alternate;
 }
 
-.lineUp{
-  padding:5px 12px;
-  float:left;
+@-webkit-keyframes Rotate { to { transform: rotate(360deg); } }
+@-moz-keyframes Rotate { to { transform: rotate(360deg); } }
+@-ms-keyframes Rotate { to { transform: rotate(360deg); } }
+@-o-keyframes Rotate { to { transform: rotate(360deg); } }
+@keyframes Rotate { to { transform: rotate(360deg); } }
+
+@-webkit-keyframes Scale { to { transform: scale(2); } }
+@-moz-keyframes Scale { to { transform: scale(2); } }
+@-ms-keyframes Scale { to { transform: scale(2); } }
+@-o-keyframes Scale { to { transform: scale(2); } }
+@keyframes Scale { to { transform: scale(2); } }
+/*.element {
+  animation: tutsFade 4s 1s infinite linear alternate,
+             tutsRotate 4s 1s infinite linear alternate;
+}
+@keyframes tutsFade {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes tutsRotate {
+  to {
+    transform: rotate(180deg);
+  }
 }

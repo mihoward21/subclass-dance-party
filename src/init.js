@@ -69,6 +69,12 @@ $(document).ready(function(){
             companion = dancers[i];
           }
         }
+      } else {
+        var distance = Math.sqrt(Math.pow(pos2.top - pos1.top,2) + Math.pow(pos2.left - pos1.left,2));
+        if(distance < result){
+          result = distance;
+          companion = dancers[i];
+        }
       }
     }
     var goToPos = companion.$node.position();
