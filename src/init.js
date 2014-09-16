@@ -23,12 +23,18 @@ $(document).ready(function(){
     // make a dancer with a random position
 
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      (($("body").height()-152) * Math.random())+32,
+      ($("body").width()-90) * Math.random(),
       Math.random() * 1000
     );
+
     $('body').append(dancer.$node);
     dancers.push(dancer);
+
+    dancer.$node.on('mouseover', function(){
+      dancer.$node.css({opacity: 0.4})
+    });
+    findClosest(dancer);
 
   });
 
@@ -37,6 +43,37 @@ $(document).ready(function(){
       dancers[i].lineUp();
     };
   });
+
+  var findClosest = function(dancer){
+    if(dancers.length < 10){
+      return null;
+    }
+    var companion;
+    var result = 10000;
+    for (var i = 0; i < dancers.length - 1; i++){
+      var pos1 = dancer.$node.position();
+      var pos2 = dancers[i].$node.position();
+      if(dancer.constructor === makeRocker){
+        if(pos2.left > 150){
+          var distance = Math.sqrt(Math.pow(pos2.top - pos1.top,2) + Math.pow(pos2.left - pos1.left,2));
+          if(distance < result){
+            result = distance;
+            companion = dancers[i];
+          }
+        }
+      } else if(dancer.constructor === makeBouncyDancer){
+        if(pos2.top > 182){
+          var distance = Math.sqrt(Math.pow(pos2.top - pos1.top,2) + Math.pow(pos2.left - pos1.left,2));
+          if(distance < result){
+            result = distance;
+            companion = dancers[i];
+          }
+        }
+      }
+    }
+    var goToPos = companion.$node.position();
+    dancer.$node.animate(goToPos);
+  };
 
 });
 

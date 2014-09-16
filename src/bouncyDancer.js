@@ -1,6 +1,10 @@
 var makeBouncyDancer = function(top, left, timeBetweenSteps){
+  if(top > 182){
+    top -= 150;
+  }
   makeRocker.call(this, top, left, timeBetweenSteps);
   this.$node[0].className = "bouncy";
+  this.moveDown = true;
 
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function
@@ -17,6 +21,14 @@ makeBouncyDancer.prototype.step = function(timeBetweenSteps){
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
 
-  this.$node.toggle();
+  if(this.moveDown){
+    this.$node.animate({top: "-=150"});
+    this.moveDown = false;
+  } else{
+    this.$node.animate({top: "+=150"});
+    this.moveDown = true;
+  }
+
+  // this.$node.toggle();
 };
 
