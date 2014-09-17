@@ -1,13 +1,12 @@
 body, html{
   height:100%;
+  background: url(background.jpg) no-repeat center center;
+  background-size: cover;
 }
 body{
   margin: 0px;
   background-color:#444;
   font-size: 18px;
-  background: url(background.jpg) no-repeat;
-  background-size: 100%;
-  padding: 20%, 0, 20%, 0;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -27,6 +26,10 @@ body, a:link, a:visited, a:active{
   padding:5px 12px;
   float:left;
 }
+.conga{
+  padding:5px 12px;
+  float:left;
+}
 .dancer, .rocker, .bouncy, .spinner{
   position:absolute;
   background: url(tonyphillips.jpg) no-repeat;
@@ -34,9 +37,15 @@ body, a:link, a:visited, a:active{
   height: 120px;
   width: 90px;
 }
+.dancer{
+  -webkit-animation: Dance 2s 1s infinite linear alternate;
+  animation: Dance 2s 1s infinite linear alternate;
+}
 .rocker{
   background: url(shawndrost.jpg) no-repeat;
   background-size: 100%;
+  -webkit-animation: Rock 2s 1s infinite linear alternate;
+  animation: Rock 2s 1s infinite linear alternate;
 }
 .bouncy{
   background: url(marcusphillips.jpg) no-repeat;
@@ -57,7 +66,7 @@ body, a:link, a:visited, a:active{
   animation: Rotate 2s 1s infinite linear alternate;
 }
 
-@-webkit-keyframes Rotate { to { transform: rotate(360deg); } }
+@-webkit-keyframes Rotate { to { transform: rotate(360deg); } } /* Use all 5 declarations for different browsers*/
 @-moz-keyframes Rotate { to { transform: rotate(360deg); } }
 @-ms-keyframes Rotate { to { transform: rotate(360deg); } }
 @-o-keyframes Rotate { to { transform: rotate(360deg); } }
@@ -68,17 +77,9 @@ body, a:link, a:visited, a:active{
 @-ms-keyframes Scale { to { transform: scale(2); } }
 @-o-keyframes Scale { to { transform: scale(2); } }
 @keyframes Scale { to { transform: scale(2); } }
-/*.element {
-  animation: tutsFade 4s 1s infinite linear alternate,
-             tutsRotate 4s 1s infinite linear alternate;
-}
-@keyframes tutsFade {
-  to {
-    opacity: 0;
-  }
-}
-@keyframes tutsRotate {
-  to {
-    transform: rotate(180deg);
-  }
-}
+
+@-webkit-keyframes Rock { to { background: url(shawn2.png); background-size: 100%; } }
+@keyframes Rock { to { background: url(shawn2.png); background-size: 100%;} }
+
+@-webkit-keyframes Dance { to { opacity: 0; } }
+@keyframes Dance { to { opacity: 0;} }

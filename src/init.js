@@ -32,7 +32,11 @@ $(document).ready(function(){
     dancers.push(dancer);
 
     dancer.$node.on('mouseover', function(){
-      dancer.$node.css({opacity: 0.4})
+      if(dancer.$node.css("opacity") > 0.5){
+        dancer.$node.css({opacity: 0.4});
+      } else{
+        dancer.$node.css({opacity: 1});
+      }
     });
     findClosest(dancer);
 
@@ -77,6 +81,32 @@ $(document).ready(function(){
     var goToPos = companion.$node.position();
     dancer.$node.animate(goToPos);
   };
+
+  //top 200 - bottom 600
+  var conga = function(){
+    for (var i = 0; i < dancers.length; i++){
+      var styleSettings = {
+        top: 200 + (i * (400/dancers.length)),
+        left: 200
+      }
+      dancers[i].$node.css(styleSettings);
+    }
+  }
+
+  $('.conga').on('click', function(event){
+    conga();
+    $('body').mousemove(function(e){
+      dancers[0].$node.css({'top': e.clientY, 'left': e.clientX});
+      for(var i = 1; i < dancers.length; i++){
+        var pos = dancers[i-1].$node.position();
+        dancers[i].$node.animate(pos, 14);
+      }
+    });
+  });
+
+  $(document).mouseup(function() {
+    $('body').off('mousemove');
+  });
 
 });
 

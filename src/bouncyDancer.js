@@ -7,7 +7,6 @@ var Bouncer = function(top, left, timeBetweenSteps){
   if(left > 135){
     left -= 90;
   }
-  console.log(left);
 
   Rocker.call(this, top, left, timeBetweenSteps);
   this.$node[0].className = "bouncy";
@@ -28,13 +27,13 @@ Bouncer.prototype.step = function(timeBetweenSteps){
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
 
-  if(this.moveDown){
-    this.$node.animate({top: "-=150"});
-    this.moveDown = false;
-  } else{
-    this.$node.animate({top: "+=150"});
-    this.moveDown = true;
-  }
+  // if(this.moveDown){
+  //   this.$node.animate({top: "-=150"});
+  //   this.moveDown = false;
+  // } else{
+  //   this.$node.animate({top: "+=150"});
+  //   this.moveDown = true;
+  // }
 
   // this.$node.toggle();
 };
