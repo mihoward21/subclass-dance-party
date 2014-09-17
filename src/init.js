@@ -50,31 +50,28 @@ $(document).ready(function(){
     }
     var companion;
     var result = 10000;
+
+    var checkDistance = function(pos1, pos2){
+      var distance = Math.sqrt(Math.pow(pos2.top - pos1.top,2) + Math.pow(pos2.left - pos1.left,2));
+      if(distance < result){
+        result = distance;
+        companion = dancers[i];
+      }
+    };
+
     for (var i = 0; i < dancers.length - 1; i++){
       var pos1 = dancer.$node.position();
       var pos2 = dancers[i].$node.position();
-      if(dancer.constructor === makeRocker){
+      if(dancer.constructor === Rocker){
         if(pos2.left > 150){
-          var distance = Math.sqrt(Math.pow(pos2.top - pos1.top,2) + Math.pow(pos2.left - pos1.left,2));
-          if(distance < result){
-            result = distance;
-            companion = dancers[i];
-          }
+          checkDistance(pos1, pos2);
         }
-      } else if(dancer.constructor === makeBouncyDancer){
-        if(pos2.top > 182){
-          var distance = Math.sqrt(Math.pow(pos2.top - pos1.top,2) + Math.pow(pos2.left - pos1.left,2));
-          if(distance < result){
-            result = distance;
-            companion = dancers[i];
-          }
+      } else if(dancer.constructor === Bouncer){
+        if(pos2.top > 302 && pos2.left > 135){
+          checkDistance(pos1, pos2);
         }
       } else {
-        var distance = Math.sqrt(Math.pow(pos2.top - pos1.top,2) + Math.pow(pos2.left - pos1.left,2));
-        if(distance < result){
-          result = distance;
-          companion = dancers[i];
-        }
+        checkDistance(pos1, pos2);
       }
     }
     var goToPos = companion.$node.position();
@@ -82,4 +79,6 @@ $(document).ready(function(){
   };
 
 });
+
+
 

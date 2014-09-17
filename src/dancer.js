@@ -3,6 +3,7 @@ var Dancer = function(top, left, timeBetweenSteps){
 
   // use jQuery to create an HTML <span> tag
   this.$node = $('<img class="dancer"></img>');
+  this.move = 0;
   this.timeBetweenSteps = timeBetweenSteps;
   this.setPosition(top, left);
   this.step();

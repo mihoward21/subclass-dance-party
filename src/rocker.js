@@ -1,5 +1,6 @@
-var makeRocker = function(top, left, timeBetweenSteps){
-  if(left > 150){
+var Rocker = function(top, left, timeBetweenSteps){
+
+  if(this.constructor === Rocker && left > 150){
     left -= 150;
   }
   Dancer.call(this, top, left, timeBetweenSteps);
@@ -11,10 +12,10 @@ var makeRocker = function(top, left, timeBetweenSteps){
 
 };
 
-makeRocker.prototype = Object.create(Dancer.prototype);
-makeRocker.prototype.constructor = makeRocker;
+Rocker.prototype = Object.create(Dancer.prototype);
+Rocker.prototype.constructor = Rocker;
 
-makeRocker.prototype.step = function(timeBetweenSteps){
+Rocker.prototype.step = function(timeBetweenSteps){
   // call the old version of step at the beginning of any call to this new version of step
   Dancer.prototype.step.call(this, timeBetweenSteps);
   // toggle() is a jQuery method to show/hide the <span> tag.

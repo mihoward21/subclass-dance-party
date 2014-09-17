@@ -1,8 +1,15 @@
-var makeBouncyDancer = function(top, left, timeBetweenSteps){
-  if(top > 182){
-    top -= 150;
+var Bouncer = function(top, left, timeBetweenSteps){
+  top += 60;
+  if(top > 302){
+    top -= 210;
   }
-  makeRocker.call(this, top, left, timeBetweenSteps);
+  left += 45;
+  if(left > 135){
+    left -= 90;
+  }
+  console.log(left);
+
+  Rocker.call(this, top, left, timeBetweenSteps);
   this.$node[0].className = "bouncy";
   this.moveDown = true;
 
@@ -11,10 +18,10 @@ var makeBouncyDancer = function(top, left, timeBetweenSteps){
 
 };
 
-makeBouncyDancer.prototype = Object.create(makeRocker.prototype);
-makeBouncyDancer.prototype.constructor = makeBouncyDancer;
+Bouncer.prototype = Object.create(Rocker.prototype);
+Bouncer.prototype.constructor = Bouncer;
 
-makeBouncyDancer.prototype.step = function(timeBetweenSteps){
+Bouncer.prototype.step = function(timeBetweenSteps){
   // call the old version of step at the beginning of any call to this new version of step
   Dancer.prototype.step.call(this, timeBetweenSteps);
   // toggle() is a jQuery method to show/hide the <span> tag.
@@ -30,5 +37,12 @@ makeBouncyDancer.prototype.step = function(timeBetweenSteps){
   }
 
   // this.$node.toggle();
+};
+
+Bouncer.prototype.lineUp = function(){
+  var styleSettings = {
+    left: 45
+  };
+  this.$node.css(styleSettings);
 };
 
